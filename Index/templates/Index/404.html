@@ -1,0 +1,15 @@
+{% extends "Index/base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>404 Not Found</title>
+{% endblock %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="section blogs-container">
+    Error 404: La página que buscabas no existe.
+  </section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'Index/base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Signup | Blog</title>
+{% endblock %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <form action="{% url 'signup' %}" method="POST">
+      {% csrf_token %}
+      {% for field in form %}
+          <div>
+              {{ field.label_tag }} {{ field }}
+              {{ field.errors }}
+          </div>
+      {% endfor %}
+      <a href="{% url 'login' %}">¿Ya tenés una cuenta?</a>
+      <button type="submit">Registrar</button>
+    </form>
+  </section>
+{% endblock %}

@@ -1,0 +1,43 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General */
+.section {
+  padding: 3rem 2rem;
+  margin-inline: auto;
+}
+
+.titulo {
+  font-size: 3rem;
+}
+
+.error {
+  padding: 1rem;
+  width: fit-content;
+  border-radius: 5px;
+  background-color: rgb(218, 54, 26);
+  color: rgb(255, 255, 255);
+}
+
+/* Nav */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 0.5rem;
+  height: 3rem;
+  width: 100%;
+  background-color: rgb(20, 20, 20);
+}
+
+nav a {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: white;
+}

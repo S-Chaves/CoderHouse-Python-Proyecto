@@ -1,0 +1,25 @@
+{% extends "Index/base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Create | Blog</title>
+{% endblock %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <form action="{% url 'createBlog' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+          <div>
+              {{ field.label_tag }} {{ field }}
+              {{ field.errors }}
+          </div>
+      {% endfor %}
+      <button type="submit">Crear</button>
+    </form>
+  </section>
+{% endblock %}

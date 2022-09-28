@@ -1,0 +1,34 @@
+{% extends "Index/base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Perfil</title>
+{% endblock %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1>{{ profile.username }}</h1>
+  <div>
+    <img src="{{ profile.avatar.image.url }}" alt="">
+  </div>
+  
+  <h2>Blogs de {{ profile.username }}</h2>
+  {% if blogs %}
+    {% for blog in blogs %}
+      <div>
+        <a href="{% url 'blogDetail' pk=blog.id %}">
+          <h2>{{ blog.title }}</h2>
+          <div>
+            <img src="{{ blog.image.url }}" alt="">
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="error">
+      {{ profile.username }} todavía no ha creado ningún blog.
+    </div>
+  {% endif %}
+{% endblock %}

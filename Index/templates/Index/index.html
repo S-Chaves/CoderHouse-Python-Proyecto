@@ -1,0 +1,36 @@
+{% extends "Index/base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Blog</title>
+{% endblock %}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+  <link rel="stylesheet" href="{% static 'Index/index.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="section blogs-container">
+    <h1 class="titulo">Blogs</h1>
+    {% if user.is_authenticated %}
+      <h1>{{ user.username }}</h1>  
+    {% endif %}
+    {% if blogs %}
+      {% for blog in blogs %}
+        <div class="blog-card">
+          <a href="{% url 'blogDetail' pk=blog.id %}">
+            <h2>{{ blog.title }}</h2>
+            <div>
+              <img src="{{ blog.image.url }}" alt="">
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="error">
+        <h2>No hay blogs todavía</h2>
+        <p>Puedes crear el tuyo ahora mismo!</p>
+      </div>
+    {% endif %}
+  </section>
+{% endblock %}
