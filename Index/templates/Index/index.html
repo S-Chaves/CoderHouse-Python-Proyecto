@@ -7,30 +7,33 @@
 {% block style %}
   <link rel="stylesheet" href="{% static 'Index/base.css' %}">
   <link rel="stylesheet" href="{% static 'Index/index.css' %}">
+  <link rel="stylesheet" href="{% static 'Blogs/css/blogs.css' %}">
 {% endblock %}
 
 {% block content %}
-  <section class="section blogs-container">
+  <section class="blogs-container">
     <h1 class="titulo">Blogs</h1>
-    {% if user.is_authenticated %}
-      <h1>{{ user.username }}</h1>  
-    {% endif %}
-    {% if blogs %}
-      {% for blog in blogs %}
-        <div class="blog-card">
-          <a href="{% url 'blogDetail' pk=blog.id %}">
-            <h2>{{ blog.title }}</h2>
-            <div>
-              <img src="{{ blog.image.url }}" alt="">
-            </div>
-          </a>
+    <div class="blogs">
+      {% if blogs %}
+        {% for blog in blogs %}
+          <div class="blog">
+            <a href="{% url 'blogDetail' pk=blog.id %}">
+              <div class="blog-img">
+                <img src="{{ blog.image.url }}" alt="">
+              </div>
+              <div class="blog-info">
+                <h2>{{ blog.title }}</h2>
+                <p>{{ blog.date }}</p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="error">
+          <h2>No hay blogs todavía</h2>
+          <p>Puedes crear el tuyo ahora mismo!</p>
         </div>
-      {% endfor %}
-    {% else %}
-      <div class="error">
-        <h2>No hay blogs todavía</h2>
-        <p>Puedes crear el tuyo ahora mismo!</p>
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
   </section>
 {% endblock %}

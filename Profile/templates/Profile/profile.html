@@ -6,29 +6,61 @@
 {% endblock %}
 {% block style %}
   <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+  <link rel="stylesheet" href="{% static 'Profile/css/profile.css' %}">
 {% endblock %}
 
 {% block content %}
-  <h1>{{ profile.username }}</h1>
-  <div>
-    <img src="{{ profile.avatar.image.url }}" alt="">
-  </div>
-  
-  <h2>Blogs de {{ profile.username }}</h2>
-  {% if blogs %}
-    {% for blog in blogs %}
-      <div>
-        <a href="{% url 'blogDetail' pk=blog.id %}">
-          <h2>{{ blog.title }}</h2>
-          <div>
-            <img src="{{ blog.image.url }}" alt="">
-          </div>
+  <div class="profile-container">
+    <div class="profile-info">
+      <div class="profile-img">
+        <img src="{{ profile.avatar.image.url }}" alt="">
+      </div>  
+      <h1>{{ profile.username }}</h1>
+      <p>{{ profile.email }}</p>
+      <p>{{ profile.name }}</p>
+      {% if profile.username == user.username %}
+        <a href="">
+          <button class="btn">Editar Perfil</button>
         </a>
-      </div>
-    {% endfor %}
-  {% else %}
-    <div class="error">
-      {{ profile.username }} todavía no ha creado ningún blog.
+      {% else %}
+        <a href="{% url 'messages' username=profile.username %}">
+          <button class="btn">Enviar Mensaje</button>
+        </a>
+      {% endif %}
     </div>
-  {% endif %}
+    <div class="profile-blogs-container">
+      {% if profile.username == user.username %}
+        <h2>Tus blogs</h2>
+      {% else %}
+        <h2>Blogs de {{ profile.username }}</h2>
+      {% endif %}
+      <div class="profile-blogs">
+        {% if blogs %}
+          {% for blog in blogs %}
+            <div class="profile-blog">
+              <a href="{% url 'blogDetail' pk=blog.id %}">
+                <div class="profile-blog-img">
+                  <img src="{{ blog.image.url }}" alt="">
+                </div>
+                <div class="profile-blog-info">
+                  <h2>{{ blog.title }}</h2>
+                  <p>{{ blog.date }}</p>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        {% else %}
+          {% if profile.username == user.username %}
+            <div class="error">
+              Todavía no has creado ningún blog.
+            </div>
+          {% else %}
+            <div class="error">
+              {{ profile.username }} todavía no ha creado ningún blog.
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
 {% endblock %}

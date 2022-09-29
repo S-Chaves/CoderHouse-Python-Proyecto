@@ -1,0 +1,40 @@
+.blogs-container {
+  display: flex;
+  padding-inline: 2rem;
+  margin-block: 3rem;
+}
+
+.blogs {
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  gap: 2rem;
+  margin-inline: auto;
+}
+
+.blog {
+  width: 17rem;
+  text-align: center;
+}
+
+.blog a {
+  text-decoration: none;
+  color: black;
+}
+
+.blog-info {
+  padding: 0.5rem 0.2rem 0 0.2rem;
+  text-align: left;
+}
+
+.blog-img {
+  width: 100%;
+  height: 15rem;
+  border-radius: 5px;
+}
+
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
