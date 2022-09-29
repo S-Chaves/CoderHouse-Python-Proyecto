@@ -11,16 +11,18 @@
 
 {% block content %}
   <section class="section">
-    <form action="{% url 'login' %}" method="POST">
+    <h1 class="titulo">Login</h1>
+    <form class="form" action="{% url 'login' %}" method="POST">
       {% csrf_token %}
       {% for field in form %}
-          <div>
-              {{ field.label_tag }} {{ field }}
-              {{ field.errors }}
-          </div>
+        {{ field.label_tag }} 
+        <div class="form-input">
+          {{ field }}
+        </div>
+        {{ field.errors }}
       {% endfor %}
       <a href="{% url 'signup' %}">¿No tenés una cuenta?</a>
-      <button type="submit">Ingresar</button>
+      <button class="btn" type="submit">Ingresar</button>
     </form>
   </section>
 {% endblock %}

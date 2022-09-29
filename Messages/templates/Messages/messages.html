@@ -6,46 +6,55 @@
 {% endblock %}
 {% block style %}
   <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+  <link rel="stylesheet" href="{% static 'Messages/css/messages.css' %}">
 {% endblock %}
 
 {% block content %}
-  <section class="section">
-    {% if emisores %}
-      {% for emisor in emisores %}
-        <div>
-          <a href="{% url 'messages' username=emisor.username %}">
-            <p>{{ emisor.username }}</p>
-          </a>
-        </div>
-      {% endfor %}
-
-      {% if messages %}
-        {% for message in messages %}
-          <p>{{ message.emisor }} - {{ message.body }}</p>
+  <h1 class="titulo">Mensajes</h1>
+  <section class="messages-container">
+    <div class="emisores">
+      {% if emisores %}
+        {% for emisor in emisores %}
+          <div class="emisor">
+            <a href="{% url 'messages' username=emisor.username %}">
+              <p>{{ emisor.username }}</p>
+            </a>
+          </div>
         {% endfor %}
       {% endif %}
+    </div>
 
-    {% else %}
-      <div>
-        No tienes mensajes.
-      </div>
-    {% endif %}
-    <!-- Cuando se envía un mensaje recargo la página manteiendo la conversación abierta -->
-    {% with username=request.resolver_match.kwargs.username %}
-      <form action="{% url 'sendMessage' username=username %}" method="POST">
-        {% csrf_token %}
-        {% for field in form %}
-            <div>
-                {{ field.label_tag }} {{ field }}
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-        {% if username|lower == 'none' %}
-          <button type="submit" disabled>Enviar</button>
-        {% else %}
-          <button type="submit">Enviar</button>
+    <div class="panel-derecho">
+      <div class="messages">
+        {% if messages %}
+          {% for message in messages %}
+            {% with username=request.resolver_match.kwargs.username %}
+              {% if username == message.emisor|stringformat:'s' %}
+                <p class="message-received">{{ message.body }}</p>
+              {% else %}
+                <p class="message-sent">{{ message.body }}</p>
+              {% endif %}
+            {% endwith %}
+            
+          {% endfor %}
         {% endif %}
-      </form>
-    {% endwith %}
+      </div>
+  
+      <!-- Cuando se envía un mensaje recargo la página manteiendo la conversación abierta -->
+      {% with username=request.resolver_match.kwargs.username %}
+        <form class="message-form" action="{% url 'sendMessage' username=username %}" method="POST">
+          {% csrf_token %}
+          {% for field in form %}
+            {{ field }}
+            {{ field.errors }}
+          {% endfor %}
+          {% if username|lower == 'none' %}
+            <button class="btn" type="submit" disabled>Enviar</button>
+          {% else %}
+            <button class="btn" type="submit">Enviar</button>
+          {% endif %}
+        </form>
+      {% endwith %}
+    </div>
   </section>
 {% endblock %}

@@ -1,0 +1,62 @@
+.messages-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  margin-inline: auto;
+  width: 50rem;
+}
+
+/* Lista de conversaciones */
+.emisores {
+  width: 10rem;
+}
+
+.emisor {
+  border: 1px black solid;
+  padding: 0.3rem 0.5rem;
+}
+
+/* Mensajes */
+.messages {
+  border: 1px solid black;
+  padding: 0.5rem;
+  height: 25rem;
+  overflow-y: scroll;
+}
+
+.message-received,
+.message-sent {
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.4rem;
+  width: fit-content;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.message-received {
+  margin-right: auto;
+}
+
+.message-sent {
+  margin-left: auto;
+}
+
+/* Formulario para mensajes */
+.message-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.message-form textarea {
+  height: 3rem;
+  padding: 0.2rem 0.3rem;
+  resize: none;
+}
+
+.message-form .btn {
+  height: 2rem;
+  margin-top: 0;
+}
