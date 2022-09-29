@@ -1,6 +1,5 @@
 .blogs-container {
-  display: flex;
-  flex-direction: column;
+
   padding-inline: 2rem;
   margin-block: 3rem;
 }

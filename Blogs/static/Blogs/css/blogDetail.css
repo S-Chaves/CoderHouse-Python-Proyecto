@@ -1,0 +1,30 @@
+.blog-container {
+  margin-block: 3rem;
+  margin-inline: auto;
+  width: 70rem;
+}
+
+.blog-title {
+  font-size: 3rem;
+}
+
+.blog-img {
+  margin: 2rem 0 3rem 0;
+  width: 70rem;
+  height: 20rem;
+  border-radius: 5px;
+}
+
+.blog-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+/* Blog Body */
+.blog-body {
+  width: 70%;
+  text-align: justify;
+  margin-inline: auto;
+}

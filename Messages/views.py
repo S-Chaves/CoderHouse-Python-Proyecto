@@ -18,8 +18,6 @@ def send_message(request, username):
         message = Message(receptor=receptor, body=body, emisor=emisor)
         message.save()
         return redirect('messages', username=username)
-      else:
-        print('mal')
 
 @login_required
 def messages_view(request, username):

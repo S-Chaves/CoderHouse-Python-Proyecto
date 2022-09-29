@@ -23,10 +23,11 @@ def create_blog_view(request):
       title = form.cleaned_data['title']
       subtitle = form.cleaned_data['subtitle']
       image = form.cleaned_data['image']
+      body = form.cleaned_data['body']
       date = datetime.today().strftime('%Y-%m-%d')
       author = request.user
 
-      blog = Blog(title=title, subtitle=subtitle, image=image, date=date, author=author)
+      blog = Blog(body=body, title=title, subtitle=subtitle, image=image, date=date, author=author)
       blog.save()
       return redirect('index')
   else:

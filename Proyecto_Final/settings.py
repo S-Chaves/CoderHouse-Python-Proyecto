@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'Login.apps.LoginConfig',
     'Blogs.apps.BlogsConfig',
     'Profile.apps.ProfileConfig',
-    'Messages.apps.MessagesConfig'
+    'Messages.apps.MessagesConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -120,12 +121,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 'full', 
+        'width': 'full', 
+    },
+}
 
 LOGIN_URL = '/accounts/login'
 

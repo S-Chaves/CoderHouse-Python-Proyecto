@@ -1,16 +1,13 @@
 from django import forms
 from .models import Blog
+from ckeditor.widgets import CKEditorWidget
 
 class CreateBlogForm(forms.Form):
   title = forms.CharField(max_length=50, label='Título del Blog')
   subtitle = forms.CharField(max_length=50, label='Subtitulo del Blog')
-  # body = forms.Textarea()
   image = forms.ImageField(label='Imágen')
+  body = forms.CharField(label='Cuerpo del Blog', widget = CKEditorWidget())
 
   class Meta:
     model = Blog
-    fields = [
-        'title',
-        'subtitle',
-        'image'
-        ]
+    fields = ['title', 'subtitle', 'body', 'image']
