@@ -20,6 +20,7 @@
 }
 
 .error {
+  margin-inline: auto;
   padding: 1rem;
   width: fit-content;
   border-radius: 5px;

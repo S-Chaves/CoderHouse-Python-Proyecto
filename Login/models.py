@@ -10,7 +10,7 @@ class User(AbstractUser):
 
   username = models.CharField(unique=True, max_length=50)
   email = models.EmailField(unique=True, null=False)
-  name = models.CharField(max_length=50)
-  description = models.TextField()
+  name = models.CharField(max_length=30)
+  description = models.CharField(max_length=50)
   web_page = models.CharField(max_length=50)
-  avatar = models.ForeignKey(Avatar, on_delete=models.CASCADE, null=True, blank=True)
+  avatar = models.ForeignKey(Avatar, on_delete=models.SET_NULL, null=True, blank=True)

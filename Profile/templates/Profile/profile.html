@@ -16,10 +16,10 @@
         <img src="{{ profile.avatar.image.url }}" alt="">
       </div>  
       <h1>{{ profile.username }}</h1>
-      <p>{{ profile.email }}</p>
       <p>{{ profile.name }}</p>
+      <a href="{{ profile.web_page }}">{{ profile.web_page }}</a>
       {% if profile.username == user.username %}
-        <a href="">
+        <a href="{% url 'editProfile' %}">
           <button class="btn">Editar Perfil</button>
         </a>
       {% else %}

@@ -8,6 +8,8 @@
 
 /* Profile info */
 .profile-info {
+  display: flex;
+  flex-direction: column;
   width: 15rem;
 }
 
@@ -22,6 +24,7 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 /* Profile blogs */
