@@ -42,6 +42,7 @@ def messages_view(request, username):
   # Filtro para obtener los mensajes con el usuario seleccionado
   if emisor:
     selected_messages = messages.filter(Q(emisor=emisor) | Q(receptor=emisor)).order_by('date')
+    selected_messages.filter(emisor=emisor).update(leido=True)
   else:
     selected_messages = None
 

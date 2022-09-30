@@ -30,9 +30,19 @@
           {% for message in messages %}
             {% with username=request.resolver_match.kwargs.username %}
               {% if username == message.emisor|stringformat:'s' %}
-                <p class="message-received">{{ message.body }}</p>
+                <div class="message-received">
+                  {{ message.body }}
+                </div>
               {% else %}
-                <p class="message-sent">{{ message.body }}</p>
+                <div class="message-sent">
+                  {{ message.body }}
+
+                  {% if message.leido %}
+                    <div class="leido"></div>
+                  {% else %}
+                    <div class="no-leido"></div>
+                  {% endif %}
+                </div>
               {% endif %}
             {% endwith %}
             

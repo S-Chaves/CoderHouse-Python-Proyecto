@@ -14,10 +14,12 @@ def login_view(request):
       email = form.cleaned_data['email']
       password = form.cleaned_data['password']
 
-      user = authenticate(username=username, password=password, email=email)
+      user = authenticate(username=username, password=password)
       if user is not None:
         login(request, user)
         return redirect('index')
+      else:
+        form.errors['password'] = 'Error de credenciales.'
   else:
     form = LoginForm()
   return render(request, 'Login/login.html', {'form': form})
