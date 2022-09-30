@@ -49,6 +49,10 @@
   color: black;
 }
 
+.profile-blog .btn {
+  margin-top: 0.5rem;
+}
+
 .profile-blog-info {
   padding: 0.5rem 0.2rem 0 0.2rem;
   text-align: left;

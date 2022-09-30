@@ -1,5 +1,9 @@
+.form {
+  width: 100%;
+}
+
 .titulo {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .create-blog-container {
@@ -11,10 +15,34 @@
   width: 55rem;
 }
 
-.form {
-  width: 100%;
+/* Edit Blog */
+.btns-edit {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-inline: auto;
+}
+
+.eliminar-btn {
+  background-color: rgb(255, 86, 56);
+  border: 1px black solid;
+  padding-block: 0.56rem;
+  border-radius: 5px;
+}
+
+.eliminar-btn:hover {
+  background-color: rgb(238, 88, 62);
 }
 
 .django-ckeditor-widget{
   width: 100%;
+}
+
+/* Arreglo para un input que aparece por CKeditor */
+#image-clear_id {
+  display: none;
+}
+
+#image-clear_id + label {
+  display: none;
 }

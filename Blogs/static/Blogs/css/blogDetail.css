@@ -4,12 +4,36 @@
   width: 70rem;
 }
 
+/* Blog Title */
 .blog-title {
   font-size: 3rem;
 }
 
+.blog-info h2 {
+  font-weight: 400;
+}
+
+.blog-sub-info {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 1rem;
+}
+
+.blog-sub-info a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+
+.blog-sub-info a:hover {
+  text-decoration: underline;
+}
+
+/* Blog Img */
 .blog-img {
-  margin: 2rem 0 3rem 0;
+  margin: 1rem 0 3rem 0;
   width: 70rem;
   height: 20rem;
   border-radius: 5px;

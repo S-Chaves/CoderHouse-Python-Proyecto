@@ -1,0 +1,35 @@
+{% extends "Index/base.html" %}
+{% load static %}
+
+{% block title %}
+  <title>Edit | Blog</title>
+{% endblock %}
+
+{% block style %}
+  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
+  <link rel="stylesheet" href="{% static 'Blogs/css/createBlog.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1 class="titulo">Editar Blog</h1>
+  <section class="create-blog-container">
+    <form class="form" action="{% url 'editBlog' pk=request.resolver_match.kwargs.pk %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for field in form %}
+          <div>
+              {{ field.label_tag }} 
+              <div class="form-input">
+                {{ field }}
+              </div>
+              {{ field.errors }}
+          </div>
+      {% endfor %}
+      <div class="btns-edit">
+        <button class="btn" type="submit">Confirmar</button>
+        <button type="submit" class="btn eliminar-btn">Eliminar Blog</button>
+      </div>
+    </form>
+  </section>
+  <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+  <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock %}

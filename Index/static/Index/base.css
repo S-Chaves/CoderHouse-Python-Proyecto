@@ -11,13 +11,13 @@
 
 /* General */
 .section {
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   width: fit-content;
   margin-inline: auto;
 }
 
 .titulo {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 2.5rem;
   text-align: center;
   font-family: 'Spectral', serif;

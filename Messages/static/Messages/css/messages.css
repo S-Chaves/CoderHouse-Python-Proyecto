@@ -1,8 +1,13 @@
+.titulo {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
 .messages-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 3rem;
   gap: 2rem;
-  margin-top: 3rem;
   margin-inline: auto;
   width: 50rem;
 }

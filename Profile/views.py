@@ -45,7 +45,7 @@ def edit_profile_view(request):
         new_avatar.image = avatar
         new_avatar.save()
         user.avatar =  new_avatar
-
+      
       user.save()
       return redirect('profile', username=user.username)
   else:

@@ -47,6 +47,9 @@
                   <p>{{ blog.date }}</p>
                 </div>
               </a>
+              <a href="{% url 'editBlog' pk=blog.id %}">
+                <button class="btn">Editar Blog</button>
+              </a>
             </div>
           {% endfor %}
         {% else %}

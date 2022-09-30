@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from .forms import CreateBlogForm
+from .forms import CreateBlogForm, EditBlogForm
 from .models import Blog
 from datetime import datetime
 
@@ -44,3 +44,39 @@ def delete_blog(request, pk):
       return redirect('index')
 
     raise PermissionDenied()
+
+@login_required
+def edit_blog(request, pk):
+  blog = get_object_or_404(Blog, id=pk)
+  if request.method == 'POST':
+    if (blog.author == request.user) or (request.user.is_staff):
+      form = EditBlogForm(request.POST, request.FILES)
+      if form.is_valid():
+        title = form.cleaned_data['title']
+        subtitle = form.cleaned_data['subtitle']
+        image = form.cleaned_data['image']
+        body = form.cleaned_data['body']
+
+        if image:
+          blog.image = image
+        blog.title = title
+        blog.subtitle = subtitle
+        blog.body = body
+        blog.save()
+
+        return redirect('blogDetail', pk=blog.id)
+      else:
+        form.errors['title'] = "Formulario invalido."
+        return render(request, 'Blogs/editBlog.html', {'form': form})
+    raise PermissionDenied()
+  else:
+    form = default_form(blog)
+  return render(request, 'Blogs/editBlog.html', {'form': form})
+
+def default_form(blog):
+  return EditBlogForm(initial={
+      'title': blog.title,
+      'subtitle': blog.subtitle,
+      'image': blog.image,
+      'body': blog.body,
+    })
