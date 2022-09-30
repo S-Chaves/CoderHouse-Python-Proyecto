@@ -26,10 +26,12 @@
       {% endfor %}
       <div class="btns-edit">
         <button class="btn" type="submit">Confirmar</button>
-        <button type="submit" class="btn eliminar-btn">Eliminar Blog</button>
+        <button form="delete-form" class="btn eliminar-btn">Eliminar Blog</button>
       </div>
     </form>
   </section>
+  <form id="delete-form" action="{% url 'deleteBlog' pk=request.resolver_match.kwargs.pk %}" method="POST">{% csrf_token %}</form>
+
   <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
   <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
 {% endblock %}

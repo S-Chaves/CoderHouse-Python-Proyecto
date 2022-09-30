@@ -36,7 +36,7 @@ def create_blog_view(request):
 
 @login_required
 def delete_blog(request, pk):
-  if request.method == 'DELETE':
+  if request.method == 'POST':
     blog = get_object_or_404(Blog, id=pk)
 
     if (blog.author == request.user) or (request.user.is_staff):
