@@ -1,11 +1,13 @@
 .blogs-container {
   padding-inline: 2rem;
-  margin: 2rem 0 3rem 0;
+  margin: 2rem auto 4rem auto;
+  max-width: 78rem;
 }
 
 .blogs {
-  display: grid;
-  grid-template-columns: repeat(4, 22%);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
   margin-inline: auto;
 }

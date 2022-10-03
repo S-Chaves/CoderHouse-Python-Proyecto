@@ -10,8 +10,14 @@
 }
 
 /* General */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .section {
-  padding: 2rem 2rem;
+  padding: 4rem 2rem;
   width: fit-content;
   margin-inline: auto;
 }
@@ -67,7 +73,7 @@ nav {
   align-items: center;
   justify-content: space-around;
   padding: 1rem 0.5rem;
-  height: 3rem;
+  height: 4rem;
   width: 100%;
   background-color: rgb(20, 20, 20);
 }
@@ -77,4 +83,50 @@ nav a {
   font-size: 1.1rem;
   text-decoration: none;
   color: white;
+}
+
+/* Footer */
+footer {
+  position: relative;
+  display: flex;
+  margin-top: auto;
+  padding: 3rem 10rem 0 10rem;
+  width: 100%;
+  height: 10rem;
+  background-color: rgb(20, 20, 20);
+  color: white;
+}
+
+footer a {
+  font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: rgb(219, 219, 219);
+}
+
+.footer-links {
+  display: flex;
+  gap: 4rem;
+}
+
+.footer-links-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-copyright {
+  position: absolute;
+  right: 2rem;
+  bottom: 0;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+@media (max-width: 700px) {
+  footer {
+    padding: 3rem 2rem 0 2rem;
+  }
 }

@@ -71,7 +71,11 @@ def edit_blog(request, pk):
     raise PermissionDenied()
   else:
     form = default_form(blog)
-  return render(request, 'Blogs/editBlog.html', {'form': form})
+
+  if (blog.author == request.user) or (request.user.is_staff):
+    return render(request, 'Blogs/editBlog.html', {'form': form})
+  else:
+    raise PermissionDenied()
 
 def default_form(blog):
   return EditBlogForm(initial={

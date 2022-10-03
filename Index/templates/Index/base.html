@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,14 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% block title %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
   {% block style %}{% endblock %}
 </head>
 <body>
   <nav>
     <a href="{% url 'index' %}">Blogs</a>
     <a href="{% url 'createBlog' %}">Crear Blog</a>
+    <a href="{% url 'messages' username='none' %}">Mensajes</a>
     {% if user.is_authenticated %}
-      <a href="{% url 'messages' username='none' %}">Mensajes</a>
       <a href="{% url 'logout' %}">Logout</a>
       <a href="{% url 'profile' username=user.username %}">Perfil</a>
     {% else %}
@@ -20,5 +22,27 @@
     {% endif %}
   </nav>
   {% block content %}{% endblock %}
+  <footer>
+    <div class="footer-links">
+      <div class="footer-links-section">
+        <a href="{% url 'index' %}">Blogs</a>
+        <a href="{% url 'createBlog' %}">Crear Blog</a>
+      </div>
+      <div class="footer-links-section">
+        <a href="{% url 'messages' username='none' %}">Mensajes</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </div>
+      {% if user.is_authenticated %}
+        <div class="footer-links-section">
+          <a href="{% url 'profile' username=user.username %}">Perfil</a>
+        </div>
+      {% endif %}
+    </div>
+    <p class="footer-copyright">© 2022 Blogs, Inc.</p>
+  </footer>
 </body>
 </html>

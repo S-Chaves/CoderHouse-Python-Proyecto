@@ -6,7 +6,7 @@
 .messages-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   gap: 2rem;
   margin-inline: auto;
   width: 50rem;

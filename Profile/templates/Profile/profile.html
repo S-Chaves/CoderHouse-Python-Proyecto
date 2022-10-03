@@ -5,7 +5,6 @@
   <title>Perfil</title>
 {% endblock %}
 {% block style %}
-  <link rel="stylesheet" href="{% static 'Index/base.css' %}">
   <link rel="stylesheet" href="{% static 'Profile/css/profile.css' %}">
 {% endblock %}
 
@@ -47,9 +46,11 @@
                   <p>{{ blog.date }}</p>
                 </div>
               </a>
-              <a href="{% url 'editBlog' pk=blog.id %}">
-                <button class="btn">Editar Blog</button>
-              </a>
+              {% if profile.username == user.username %}
+                <a href="{% url 'editBlog' pk=blog.id %}">
+                  <button class="btn">Editar Blog</button>
+                </a>
+              {% endif %}
             </div>
           {% endfor %}
         {% else %}
